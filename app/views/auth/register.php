@@ -239,7 +239,7 @@
 
             <!-- Footer -->
             <div class="text-center mt-8 text-gray-400 text-sm">
-                <p>© 2024 Student Management System</p>
+                <p>© 2025 Student Management System</p>
             </div>
         </div>
     </div>
