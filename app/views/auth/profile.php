@@ -145,7 +145,7 @@
         }
     </style>
 </head>
-<body class="min-h-screen bg-gradient-to-br from-blue-900 via-purple-950 to-black text-white">
+<body class="min-h-screen bg-gradient-to-br from-blue-900 via-blue-950 to-black text-white">
     <!-- Navigation -->
     <nav class="glassmorphism-nav shadow-lg">
         <div class="max-w-7xl mx-auto px-4">
@@ -188,7 +188,7 @@
     <div class="max-w-4xl mx-auto py-8 px-4">
         <div class="glassmorphism rounded-2xl shadow-xl p-8 fade-in">
             <div class="flex items-center justify-between mb-8">
-                <h2 class="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                <h2 class="text-3xl font-bold bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
                     <i class="fas fa-user mr-3 text-blue-400"></i>My Profile
                 </h2>
                 <span class="role-badge text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg">
@@ -210,142 +210,142 @@
                 </div>
             <?php endif; ?>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <!-- Profile Image Section -->
-                <div class="lg:col-span-1">
-                    <div class="text-center">
-                        <div class="relative inline-block">
-                            <img src="<?= isset($_SESSION['profile_image']) ? site_url('public/uploads/' . $_SESSION['profile_image']) : 'https://via.placeholder.com/200x200?text=' . substr($_SESSION['first_name'] ?? 'U', 0, 1) ?>" 
-                                 alt="Profile Image" 
-                                 class="profile-image w-32 h-32 rounded-full mx-auto mb-4 object-cover">
-                            
-                            <form method="POST" action="<?= site_url('auth/upload_image') ?>" enctype="multipart/form-data" class="mt-4">
-                                <label class="upload-btn text-white px-4 py-2 rounded-lg cursor-pointer font-medium shadow-lg inline-block">
-                                    <i class="fas fa-camera mr-2"></i>Change Photo
-                                    <input type="file" name="profile_image" accept="image/*" class="hidden" onchange="this.form.submit()">
-                                </label>
-                            </form>
-                        </div>
-                        
-                        <h3 class="text-xl font-semibold text-white mt-4">
-                            <?= htmlspecialchars(($user['first_name'] ?? '') . ' ' . ($user['last_name'] ?? '')) ?>
-                        </h3>
-                        <p class="text-gray-300"><?= htmlspecialchars($user['email'] ?? '') ?></p>
-                        <p class="text-sm text-gray-400 mt-2">Member since <?= isset($user['created_at']) ? date('M Y', strtotime($user['created_at'])) : 'Unknown' ?></p>
-                    </div>
+            <!-- Profile Header Card -->
+            <div class="glassmorphism rounded-xl p-6 mb-8 text-center">
+                <div class="relative inline-block">
+                    <img src="<?= isset($_SESSION['profile_image']) ? site_url('public/uploads/' . $_SESSION['profile_image']) : 'https://via.placeholder.com/120x120?text=' . substr($_SESSION['first_name'] ?? 'U', 0, 1) ?>" 
+                         alt="Profile Image" 
+                         class="profile-image w-24 h-24 rounded-full object-cover mx-auto mb-4">
+                    
+                    <form method="POST" action="<?= site_url('auth/upload_image') ?>" enctype="multipart/form-data" class="mt-2">
+                        <label class="upload-btn text-white px-3 py-1 rounded-lg cursor-pointer text-sm font-medium shadow-lg inline-block">
+                            <i class="fas fa-camera mr-1"></i>Change
+                            <input type="file" name="profile_image" accept="image/*" class="hidden" onchange="this.form.submit()">
+                        </label>
+                    </form>
                 </div>
+                
+                <h3 class="text-2xl font-semibold text-white mb-2">
+                    <?= htmlspecialchars(($user['first_name'] ?? '') . ' ' . ($user['last_name'] ?? '')) ?>
+                </h3>
+                <p class="text-blue-300 text-lg"><?= htmlspecialchars($user['email'] ?? '') ?></p>
+                <p class="text-sm text-gray-400 mt-1">Member since <?= isset($user['created_at']) ? date('M Y', strtotime($user['created_at'])) : 'Unknown' ?></p>
+            </div>
 
-                <!-- Profile Information -->
-                <div class="lg:col-span-2">
-                    <form method="POST" action="<?= site_url('auth/profile') ?>" class="space-y-6">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="relative">
-                                <input type="text"
-                                       id="first_name"
-                                       name="first_name"
-                                       required
-                                       class="form-input w-full px-4 py-3 rounded-lg text-white placeholder-transparent focus:outline-none"
-                                       placeholder="First Name"
-                                       value="<?= htmlspecialchars($user['first_name'] ?? '') ?>">
-                                <label for="first_name" class="form-label absolute left-4 top-3 text-gray-300 pointer-events-none">
-                                    <i class="fas fa-user mr-2"></i>First Name
-                                </label>
-                            </div>
-                            <div class="relative">
-                                <input type="text"
-                                       id="last_name"
-                                       name="last_name"
-                                       required
-                                       class="form-input w-full px-4 py-3 rounded-lg text-white placeholder-transparent focus:outline-none"
-                                       placeholder="Last Name"
-                                       value="<?= htmlspecialchars($user['last_name'] ?? '') ?>">
-                                <label for="last_name" class="form-label absolute left-4 top-3 text-gray-300 pointer-events-none">
-                                    <i class="fas fa-user mr-2"></i>Last Name
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="relative">
-                            <input type="email"
-                                   id="email"
-                                   name="email"
-                                   required
-                                   class="form-input w-full px-4 py-3 rounded-lg text-white placeholder-transparent focus:outline-none"
-                                   placeholder="Email Address"
-                                   value="<?= htmlspecialchars($user['email'] ?? '') ?>">
-                            <label for="email" class="form-label absolute left-4 top-3 text-gray-300 pointer-events-none">
-                                <i class="fas fa-envelope mr-2"></i>Email Address
-                            </label>
-                        </div>
-
+            <!-- Profile Information Section -->
+            <div class="glassmorphism rounded-xl p-8 mb-8">
+                <h4 class="text-xl font-semibold text-white mb-6 flex items-center">
+                    <i class="fas fa-edit mr-3 text-blue-400"></i>Profile Information
+                </h4>
+                
+                <form method="POST" action="<?= site_url('auth/profile') ?>" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="relative">
                             <input type="text"
-                                   id="username"
-                                   name="username"
+                                   id="first_name"
+                                   name="first_name"
                                    required
                                    class="form-input w-full px-4 py-3 rounded-lg text-white placeholder-transparent focus:outline-none"
-                                   placeholder="Username"
-                                   value="<?= htmlspecialchars($user['username'] ?? '') ?>">
-                            <label for="username" class="form-label absolute left-4 top-3 text-gray-300 pointer-events-none">
-                                <i class="fas fa-at mr-2"></i>Username
+                                   placeholder="First Name"
+                                   value="<?= htmlspecialchars($user['first_name'] ?? '') ?>">
+                            <label for="first_name" class="form-label absolute left-4 top-3 text-gray-300 pointer-events-none">
+                                <i class="fas fa-user mr-2"></i>First Name
                             </label>
                         </div>
-
-                        <button type="submit" class="submit-btn w-full py-3 rounded-lg font-semibold text-white shadow-lg">
-                            <i class="fas fa-save mr-2"></i>Update Profile
-                        </button>
-                    </form>
-
-                    <!-- Change Password Section -->
-                    <div class="mt-8 pt-8 border-t section-divider">
-                        <h4 class="text-lg font-semibold text-white mb-4">
-                            <i class="fas fa-key mr-2 text-green-400"></i>Change Password
-                        </h4>
-                        
-                        <form method="POST" action="<?= site_url('auth/change_password') ?>" class="space-y-4">
-                            <div class="relative">
-                                <input type="password"
-                                       id="current_password"
-                                       name="current_password"
-                                       required
-                                       class="form-input w-full px-4 py-3 rounded-lg text-white placeholder-transparent focus:outline-none"
-                                       placeholder="Current Password">
-                                <label for="current_password" class="form-label absolute left-4 top-3 text-gray-300 pointer-events-none">
-                                    <i class="fas fa-lock mr-2"></i>Current Password
-                                </label>
-                            </div>
-                            
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div class="relative">
-                                    <input type="password"
-                                           id="new_password"
-                                           name="new_password"
-                                           required
-                                           class="form-input w-full px-4 py-3 rounded-lg text-white placeholder-transparent focus:outline-none"
-                                           placeholder="New Password">
-                                    <label for="new_password" class="form-label absolute left-4 top-3 text-gray-300 pointer-events-none">
-                                        <i class="fas fa-key mr-2"></i>New Password
-                                    </label>
-                                </div>
-                                <div class="relative">
-                                    <input type="password"
-                                           id="confirm_password"
-                                           name="confirm_password"
-                                           required
-                                           class="form-input w-full px-4 py-3 rounded-lg text-white placeholder-transparent focus:outline-none"
-                                           placeholder="Confirm New Password">
-                                    <label for="confirm_password" class="form-label absolute left-4 top-3 text-gray-300 pointer-events-none">
-                                        <i class="fas fa-key mr-2"></i>Confirm New Password
-                                    </label>
-                                </div>
-                            </div>
-                            
-                            <button type="submit" class="submit-btn submit-btn-green w-full py-3 rounded-lg font-semibold text-white shadow-lg">
-                                <i class="fas fa-key mr-2"></i>Change Password
-                            </button>
-                        </form>
+                        <div class="relative">
+                            <input type="text"
+                                   id="last_name"
+                                   name="last_name"
+                                   required
+                                   class="form-input w-full px-4 py-3 rounded-lg text-white placeholder-transparent focus:outline-none"
+                                   placeholder="Last Name"
+                                   value="<?= htmlspecialchars($user['last_name'] ?? '') ?>">
+                            <label for="last_name" class="form-label absolute left-4 top-3 text-gray-300 pointer-events-none">
+                                <i class="fas fa-user mr-2"></i>Last Name
+                            </label>
+                        </div>
                     </div>
-                </div>
+
+                    <div class="relative">
+                        <input type="email"
+                               id="email"
+                               name="email"
+                               required
+                               class="form-input w-full px-4 py-3 rounded-lg text-white placeholder-transparent focus:outline-none"
+                               placeholder="Email Address"
+                               value="<?= htmlspecialchars($user['email'] ?? '') ?>">
+                        <label for="email" class="form-label absolute left-4 top-3 text-gray-300 pointer-events-none">
+                            <i class="fas fa-envelope mr-2"></i>Email Address
+                        </label>
+                    </div>
+
+                    <div class="relative">
+                        <input type="text"
+                               id="username"
+                               name="username"
+                               required
+                               class="form-input w-full px-4 py-3 rounded-lg text-white placeholder-transparent focus:outline-none"
+                               placeholder="Username"
+                               value="<?= htmlspecialchars($user['username'] ?? '') ?>">
+                        <label for="username" class="form-label absolute left-4 top-3 text-gray-300 pointer-events-none">
+                            <i class="fas fa-at mr-2"></i>Username
+                        </label>
+                    </div>
+
+                    <button type="submit" class="submit-btn w-full py-3 rounded-lg font-semibold text-white shadow-lg">
+                        <i class="fas fa-save mr-2"></i>Update Profile
+                    </button>
+                </form>
+            </div>
+
+            <!-- Change Password Section -->
+            <div class="glassmorphism rounded-xl p-8">
+                <h4 class="text-xl font-semibold text-white mb-6 flex items-center">
+                    <i class="fas fa-key mr-3 text-blue-400"></i>Change Password
+                </h4>
+                
+                <form method="POST" action="<?= site_url('auth/change_password') ?>" class="space-y-6">
+                    <div class="relative">
+                        <input type="password"
+                               id="current_password"
+                               name="current_password"
+                               required
+                               class="form-input w-full px-4 py-3 rounded-lg text-white placeholder-transparent focus:outline-none"
+                               placeholder="Current Password">
+                        <label for="current_password" class="form-label absolute left-4 top-3 text-gray-300 pointer-events-none">
+                            <i class="fas fa-lock mr-2"></i>Current Password
+                        </label>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="relative">
+                            <input type="password"
+                                   id="new_password"
+                                   name="new_password"
+                                   required
+                                   class="form-input w-full px-4 py-3 rounded-lg text-white placeholder-transparent focus:outline-none"
+                                   placeholder="New Password">
+                            <label for="new_password" class="form-label absolute left-4 top-3 text-gray-300 pointer-events-none">
+                                <i class="fas fa-key mr-2"></i>New Password
+                            </label>
+                        </div>
+                        <div class="relative">
+                            <input type="password"
+                                   id="confirm_password"
+                                   name="confirm_password"
+                                   required
+                                   class="form-input w-full px-4 py-3 rounded-lg text-white placeholder-transparent focus:outline-none"
+                                   placeholder="Confirm New Password">
+                            <label for="confirm_password" class="form-label absolute left-4 top-3 text-gray-300 pointer-events-none">
+                                <i class="fas fa-key mr-2"></i>Confirm New Password
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn w-full py-3 rounded-lg font-semibold text-white shadow-lg">
+                        <i class="fas fa-key mr-2"></i>Change Password
+                    </button>
+                </form>
             </div>
         </div>
     </div>
