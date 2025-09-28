@@ -83,14 +83,19 @@
         }
 
         .search-input {
-            background: rgba(255, 255, 255, 0.9);
-            border: 2px solid transparent;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
             border-radius: 25px;
             padding: 12px 20px 12px 50px;
             width: 100%;
             transition: all 0.3s ease;
-            color: #374151;
+            color: white;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
         }
 
         .search-input:focus {
@@ -108,13 +113,14 @@
         }
 
         .student-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(18px) saturate(180%);
+            -webkit-backdrop-filter: blur(18px) saturate(180%);
             border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: #374151;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
 
         .student-card:hover {
@@ -155,9 +161,10 @@
         }
 
         .floating-nav {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(18px) saturate(180%);
+            -webkit-backdrop-filter: blur(18px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         .add-student-btn {
@@ -197,11 +204,12 @@
         }
 
         .per-page-select {
-            background: rgba(255, 255, 255, 0.9);
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
             border-radius: 20px;
             padding: 8px 16px;
-            color: #374151;
+            color: white;
             font-weight: 500;
             transition: all 0.3s ease;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -243,7 +251,7 @@
         }
     </style>
 </head>
-<body class="min-h-screen bg-gradient-to-br from-blue-100 via-blue-50 to-indigo-100">
+<body class="min-h-screen bg-gradient-to-br from-blue-900 via-blue-950 to-black text-white">
     <!-- Navigation -->
     <nav class="fixed top-0 w-full floating-nav shadow-lg z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -256,16 +264,16 @@
                         STUDENT PORTAL
                     </h1>
                     <div class="hidden md:flex space-x-6 ml-8">
-                        <a href="<?= site_url('') ?>" class="text-gray-700 hover:text-blue-600 transition-colors font-medium">HOME</a>
+                        <a href="<?= site_url('') ?>" class="text-white hover:text-blue-400 transition-colors font-medium">HOME</a>
                     </div>
                 </div>
                 
                 <div class="flex items-center space-x-4">
-                    <a href="<?= site_url('auth/profile') ?>" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                    <a href="<?= site_url('auth/profile') ?>" class="flex items-center space-x-2 text-white hover:text-blue-400">
                         <span><?= htmlspecialchars(($_SESSION['first_name'] ?? '') . ' ' . ($_SESSION['last_name'] ?? '')) ?></span>
                     </a>
 
-                    <a href="<?= site_url('auth/logout') ?>" class="text-gray-700 hover:text-blue-600 flex items-center space-x-1">
+                    <a href="<?= site_url('auth/logout') ?>" class="text-white hover:text-blue-400 flex items-center space-x-1">
                         <i class="fas fa-sign-out-alt"></i>
                         <span class="hidden sm:inline">Logout</span>
                     </a>
@@ -280,7 +288,7 @@
             <h1 class="text-4xl md:text-6xl font-bold gradient-text mb-4">
                 Student Management
             </h1>
-            <p class="text-gray-600 text-lg">Manage your students with style and efficiency</p>
+            <p class="text-gray-300 text-lg">Manage your students with style and efficiency</p>
         </div>
     </section>
 
@@ -324,7 +332,7 @@
             <!-- Per Page Selector -->
             <form method="get" action="<?php echo site_url('students'); ?>" class="flex items-center space-x-3">
                 <input type="hidden" name="search" value="<?php echo htmlspecialchars($search ?? ''); ?>">
-                <span class="text-gray-600 font-medium whitespace-nowrap">Show:</span>
+                <span class="text-white font-medium whitespace-nowrap">Show:</span>
                 <select name="per_page" 
                         id="per_page" 
                         class="per-page-select"
@@ -334,13 +342,13 @@
                     <option value="50" <?= ($per_page ?? 10) == 50 ? 'selected' : '' ?>>50</option>
                     <option value="100" <?= ($per_page ?? 10) == 100 ? 'selected' : '' ?>>100</option>
                 </select>
-                <span class="text-gray-600 font-medium whitespace-nowrap">per page</span>
+                <span class="text-white font-medium whitespace-nowrap">per page</span>
             </form>
         </div>
 
         <!-- Students Table -->
-        <div class="student-card overflow-hidden card-hover">
-            <div class="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-8 py-6">
+            <div class="glassmorphism overflow-hidden card-hover">
+                <div class="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-8 py-6">
                 <h2 class="text-2xl font-semibold">Student Directory</h2>
                 <p class="text-blue-100 mt-1">Manage and view all registered students</p>
             </div>
@@ -348,39 +356,39 @@
             <!-- Desktop Table View -->
             <div class="hidden md:block overflow-x-auto">
                 <table class="w-full">
-                    <thead class="bg-gradient-to-r from-gray-50 to-gray-100">
+                    <thead class="bg-gradient-to-r from-blue-800/30 to-blue-700/30">
                         <tr>
-                            <th class="px-8 py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">ID</th>
-                            <th class="px-8 py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">Profile</th>
-                            <th class="px-8 py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">Name</th>
-                            <th class="px-8 py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">Email</th>
-                            <th class="px-8 py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">Role</th>
+                            <th class="px-8 py-4 text-left text-sm font-semibold text-blue-200 uppercase tracking-wider">ID</th>
+                            <th class="px-8 py-4 text-left text-sm font-semibold text-blue-200 uppercase tracking-wider">Profile</th>
+                            <th class="px-8 py-4 text-left text-sm font-semibold text-blue-200 uppercase tracking-wider">Name</th>
+                            <th class="px-8 py-4 text-left text-sm font-semibold text-blue-200 uppercase tracking-wider">Email</th>
+                            <th class="px-8 py-4 text-left text-sm font-semibold text-blue-200 uppercase tracking-wider">Role</th>
                             <?php if ($is_admin): ?>
-                            <th class="px-8 py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">Actions</th>
+                            <th class="px-8 py-4 text-left text-sm font-semibold text-blue-200 uppercase tracking-wider">Actions</th>
                             <?php endif; ?>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-gray-200">
+                    <tbody class="divide-y divide-white/10">
                         <?php foreach ($students as $row): ?>
-                        <tr class="hover:bg-blue-50 transition-colors">
-                            <td class="px-8 py-6 whitespace-nowrap text-sm font-mono text-blue-600 font-semibold">
+                        <tr class="hover:bg-white/10 transition-colors">
+                            <td class="px-8 py-6 whitespace-nowrap text-sm font-mono text-blue-400 font-semibold">
                                 #<?= $row['id'] ?>
                             </td>
                             <td class="px-8 py-6 whitespace-nowrap">
                                 <?php if (isset($row['profile_image']) && $row['profile_image']): ?>
                                     <img src="<?= site_url('public/uploads/' . $row['profile_image']) ?>" 
                                          alt="Profile" 
-                                         class="w-12 h-12 rounded-full object-cover border-2 border-blue-200">
+                                         class="w-12 h-12 rounded-full object-cover border-2 border-blue-400">
                                 <?php else: ?>
                                     <div class="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center text-white font-semibold text-sm">
                                         <?= isset($row['first_name']) ? strtoupper(substr($row['first_name'], 0, 1)) : 'U' ?>
                                     </div>
                                 <?php endif; ?>
                             </td>
-                            <td class="px-8 py-6 whitespace-nowrap text-sm font-medium text-gray-800">
+                            <td class="px-8 py-6 whitespace-nowrap text-sm font-medium text-white">
                                 <?= htmlspecialchars(($row['first_name'] ?? '') . ' ' . ($row['last_name'] ?? '')) ?>
                             </td>
-                            <td class="px-8 py-6 whitespace-nowrap text-sm text-gray-600">
+                            <td class="px-8 py-6 whitespace-nowrap text-sm text-gray-300">
                                 <?= htmlspecialchars($row['email'] ?? '') ?>
                             </td>
                             <td class="px-8 py-6 whitespace-nowrap">
@@ -409,22 +417,22 @@
             </div>
 
             <!-- Mobile Card View -->
-            <div class="md:hidden divide-y divide-gray-200">
+            <div class="md:hidden divide-y divide-white/10">
                 <?php foreach ($students as $row): ?>
-                <div class="p-6 hover:bg-blue-50 transition-colors">
+                <div class="p-6 hover:bg-white/10 transition-colors">
                     <div class="flex items-start justify-between mb-4">
                         <div class="flex items-center space-x-3">
                             <?php if (isset($row['profile_image']) && $row['profile_image']): ?>
                                 <img src="<?= site_url('public/uploads/' . $row['profile_image']) ?>" 
                                      alt="Profile" 
-                                     class="w-12 h-12 rounded-full object-cover border-2 border-blue-200">
+                                     class="w-12 h-12 rounded-full object-cover border-2 border-blue-400">
                             <?php else: ?>
                                 <div class="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center text-white font-semibold">
                                     <?= isset($row['first_name']) ? strtoupper(substr($row['first_name'], 0, 1)) : 'U' ?>
                                 </div>
                             <?php endif; ?>
                             <div>
-                                <h3 class="text-lg font-bold text-gray-800">
+                                <h3 class="text-lg font-bold text-white">
                                     <?= htmlspecialchars(($row['first_name'] ?? '') . ' ' . ($row['last_name'] ?? '')) ?>
                                 </h3>
                                 <p class="text-blue-600 font-semibold">#<?= $row['id'] ?></p>
@@ -435,7 +443,7 @@
                         </span>
                     </div>
                     <div class="mb-4">
-                        <p class="text-gray-600 flex items-center">
+                        <p class="text-gray-300 flex items-center">
                             <i class="fas fa-envelope mr-2 text-blue-500"></i>
                             <?= htmlspecialchars($row['email'] ?? '') ?>
                         </p>
