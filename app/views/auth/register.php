@@ -27,8 +27,8 @@
 
         .form-input:focus {
             background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(34, 197, 94, 0.6);
-            box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+            border-color: rgba(59, 130, 246, 0.6);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
             transform: translateY(-2px);
         }
 
@@ -44,7 +44,7 @@
         .form-input:not(:placeholder-shown) + .form-label,
         .form-input.has-value + .form-label {
             transform: translateY(-28px) scale(0.85);
-            color: #4ade80;
+            color: #60a5fa;
             font-weight: 600;
             background: rgba(30, 41, 59, 0.8);
             padding: 0 8px;
@@ -52,13 +52,13 @@
         }
 
         .submit-btn {
-            background: linear-gradient(135deg, #22c55e, #16a34a);
+            background: linear-gradient(135deg, #3b82f6, #6366f1);
             transition: all 0.25s ease;
         }
 
         .submit-btn:hover {
             transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
         }
 
         .submit-btn:active {
@@ -93,12 +93,12 @@
         }
 
         .icon-container {
-            background: linear-gradient(135deg, #22c55e, #16a34a);
-            box-shadow: 0 8px 25px rgba(34, 197, 94, 0.3);
+            background: linear-gradient(135deg, #3b82f6, #6366f1);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
         }
     </style>
 </head>
-<body class="min-h-screen bg-gradient-to-br from-green-900 via-emerald-950 to-black text-white">
+<body class="min-h-screen bg-gradient-to-br from-blue-900 via-blue-950 to-black text-white">
     <!-- Navigation -->
     <nav class="fixed top-0 w-full bg-white/10 backdrop-blur-md shadow-lg z-50">
         <div class="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center">
@@ -115,7 +115,7 @@
                 <div class="icon-container mx-auto w-20 h-20 rounded-full flex items-center justify-center mb-6">
                     <i class="fas fa-user-plus text-white text-3xl"></i>
                 </div>
-                <h1 class="text-4xl md:text-5xl font-extrabold tracking-wide bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent mb-2">
+                <h1 class="text-4xl md:text-5xl font-extrabold tracking-wide bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent mb-2">
                     Create Account
                 </h1>
                 <p class="text-gray-300">Join our student management system</p>
@@ -229,7 +229,7 @@
                     <div class="mt-6 text-center">
                         <p class="text-gray-300">
                             Already have an account?
-                            <a href="<?= site_url('auth/login') ?>" class="text-green-400 hover:text-green-300 font-medium underline transition duration-200">
+                            <a href="<?= site_url('auth/login') ?>" class="text-blue-400 hover:text-blue-300 font-medium underline transition duration-200">
                                 Sign in here
                             </a>
                         </p>
