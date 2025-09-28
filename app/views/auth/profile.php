@@ -147,34 +147,43 @@
 </head>
 <body class="min-h-screen bg-gradient-to-br from-blue-900 via-blue-950 to-black text-white">
     <!-- Navigation -->
-<nav class="glassmorphism-nav shadow-lg">
-    <div class="max-w-7xl mx-auto px-4">
-        <div class="flex justify-between items-center py-4">
-            <div class="flex items-center">
-                <i class="fas fa-graduation-cap text-blue-400 text-2xl mr-3"></i>
-                <h1 class="text-xl font-bold text-white">Student Management System</h1>
-            </div>
-            
-            <div class="flex items-center space-x-4">
-                <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
-                    <a href="<?= site_url('students') ?>" 
-                       class="submit-btn px-4 py-2 rounded-lg font-medium shadow-lg flex items-center">
-                        <i class="fas fa-users mr-2"></i>Manage Students
-                    </a>
-                <?php endif; ?>
-
-                <!-- Logout button always visible -->
-                <form method="POST" action="<?= site_url('auth/logout') ?>">
-                    <button type="submit" 
-                            class="submit-btn px-4 py-2 rounded-lg font-medium shadow-lg flex items-center">
-                        <i class="fas fa-sign-out-alt mr-2"></i>Logout
-                    </button>
-                </form>
+    <nav class="glassmorphism-nav shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <i class="fas fa-graduation-cap text-blue-400 text-2xl mr-3"></i>
+                    <h1 class="text-xl font-bold text-white">Student Management System</h1>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
+                        <a href="<?= site_url('students') ?>" class="submit-btn px-4 py-2 rounded-lg font-medium shadow-lg">
+                            <i class="fas fa-users mr-2"></i>Manage Students
+                        </a>
+                    <?php endif; ?>
+                    
+                    <div class="relative group">
+                        <button class="flex items-center space-x-2 text-white hover:text-blue-300 transition duration-10000">
+                            <img src="<?= isset($_SESSION['profile_image']) ? site_url('public/uploads/' . $_SESSION['profile_image']) : 'https://via.placeholder.com/40x40?text=' . substr($_SESSION['first_name'] ?? 'U', 0, 1) ?>" 
+                                 alt="Profile" 
+                                 class="w-8 h-8 rounded-full border border-white/20">
+                            <span><?= htmlspecialchars(($_SESSION['first_name'] ?? '') . ' ' . ($_SESSION['last_name'] ?? '')) ?></span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        
+                        <div class="dropdown-menu absolute right-0 mt-2 w-48 rounded-lg shadow-lg py-2 z-50 hidden group-hover:block">
+                            <a href="<?= site_url('auth/profile') ?>" class="dropdown-item block px-4 py-2 text-white hover:text-blue-300">
+                                <i class="fas fa-user mr-2"></i>Profile
+                            </a>
+                            <a href="<?= site_url('auth/logout') ?>" class="dropdown-item block px-4 py-2 text-white hover:text-blue-300">
+                                <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</nav>
-
+    </nav>
 
     <div class="max-w-4xl mx-auto py-8 px-4">
         <div class="glassmorphism rounded-2xl shadow-xl p-8 fade-in">
