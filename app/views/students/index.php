@@ -41,26 +41,19 @@
                     </div>
                 </div>
                 
-                <div class="flex items-center space-x-4">
-                    <div class="relative group">
-                        <button class="flex items-center space-x-2 text-white hover:text-blue-400">
+                    <div class="flex items-center space-x-4">
+                        <a href="<?= site_url('auth/profile') ?>" class="flex items-center space-x-2 text-white hover:text-blue-400">
                             <img src="<?= isset($_SESSION['profile_image']) ? site_url('public/uploads/' . $_SESSION['profile_image']) : 'https://via.placeholder.com/40x40?text=' . substr($_SESSION['first_name'] ?? 'U', 0, 1) ?>" 
-                                 alt="Profile" 
-                                 class="w-8 h-8 rounded-full">
+                                alt="Profile" 
+                                class="w-8 h-8 rounded-full">
                             <span><?= htmlspecialchars(($_SESSION['first_name'] ?? '') . ' ' . ($_SESSION['last_name'] ?? '')) ?></span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        
-                        <div class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-50 hidden group-hover:block">
-                            <a href="<?= site_url('auth/profile') ?>" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
-                                <i class="fas fa-user mr-2"></i>Profile
-                            </a>
-                            <a href="<?= site_url('auth/logout') ?>" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
-                                <i class="fas fa-sign-out-alt mr-2"></i>Logout
-                            </a>
-                        </div>
+                        </a>
+
+                        <a href="<?= site_url('auth/logout') ?>" class="text-white hover:text-blue-400 flex items-center space-x-1">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Logout</span>
+                        </a>
                     </div>
-                </div>
             </div>
         </div>
     </nav>
