@@ -153,7 +153,10 @@
     <div class="pt-24 pb-12 px-4 sm:px-6 lg:px-8">
         <div class="max-w-4xl mx-auto">
             <!-- Header Section -->
+            <div class="mb-12 text-center">
+                <div class="flex items-center justify-center mb-6">
 
+                </div>
 
                 <div class="icon-container mx-auto w-20 h-20 rounded-full flex items-center justify-center mb-6">
                     <i class="fas fa-user-plus text-white text-3xl"></i>
