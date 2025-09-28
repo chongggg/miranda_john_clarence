@@ -261,7 +261,7 @@
                         <i class="fas fa-graduation-cap text-white text-lg"></i>
                     </div>
                     <h1 class="text-xl font-bold gradient-text">
-                        STUDENT PORTAL
+                        STUDENT MANAGEMENT SYSTEM
                     </h1>
                     <div class="hidden md:flex space-x-6 ml-8">
                         <a href="<?= site_url('') ?>" class="text-white hover:text-blue-400 transition-colors font-medium">HOME</a>

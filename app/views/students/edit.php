@@ -138,7 +138,7 @@
                         <i class="fas fa-graduation-cap text-white text-lg"></i>
                     </div>
                     <h1 class="text-xl font-bold gradient-text">
-                        STUDENT PORTAL
+                        STUDENT MANAGEMENT SYSTEM
                     </h1>
                     <div class="hidden md:flex space-x-6 ml-8">
                         <a href="<?php echo site_url('students'); ?>" class="text-white hover:text-blue-400 transition-colors font-medium">HOME</a>
@@ -154,15 +154,6 @@
         <div class="max-w-4xl mx-auto">
             <!-- Header Section -->
             <div class="mb-12 text-center">
-                <div class="flex items-center justify-center mb-6">
-                    <a href="<?php echo site_url('students'); ?>" 
-                       class="inline-flex items-center text-gray-300 hover:text-white transition-colors glassmorphism px-4 py-2 rounded-lg">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                        </svg>
-                        Back to Students
-                    </a>
-                </div>
 
                 <div class="icon-container mx-auto w-20 h-20 rounded-full flex items-center justify-center mb-6">
                     <i class="fas fa-user-edit text-white text-3xl"></i>

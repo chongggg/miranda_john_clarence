@@ -53,10 +53,6 @@
         <div class="mb-12">
             <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between">
                 <div class="mb-8 lg:mb-0">
-                    <a href="<?= site_url('students') ?>" class="inline-flex items-center text-blue-400 hover:text-blue-300 mb-4">
-                        <i class="fas fa-arrow-left mr-2"></i>
-                        Back to Students
-                    </a>
                     <h1 class="text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight">
                         DELETED
                         <span class="block bg-gradient-to-r from-red-400 via-orange-400 to-yellow-400 bg-clip-text text-transparent">
