@@ -162,24 +162,30 @@
                         </a>
                     <?php endif; ?>
                     
-                    <div class="relative group">
-                        <button class="flex items-center space-x-2 text-white hover:text-blue-300 transition duration-10000">
-                            <img src="<?= isset($_SESSION['profile_image']) ? site_url('public/uploads/' . $_SESSION['profile_image']) : 'https://via.placeholder.com/40x40?text=' . substr($_SESSION['first_name'] ?? 'U', 0, 1) ?>" 
-                                 alt="Profile" 
-                                 class="w-8 h-8 rounded-full border border-white/20">
-                            <span><?= htmlspecialchars(($_SESSION['first_name'] ?? '') . ' ' . ($_SESSION['last_name'] ?? '')) ?></span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        
-                        <div class="dropdown-menu absolute right-0 mt-2 w-48 rounded-lg shadow-lg py-2 z-50 hidden group-hover:block">
-                            <a href="<?= site_url('auth/profile') ?>" class="dropdown-item block px-4 py-2 text-white hover:text-blue-300">
-                                <i class="fas fa-user mr-2"></i>Profile
-                            </a>
-                            <a href="<?= site_url('auth/logout') ?>" class="dropdown-item block px-4 py-2 text-white hover:text-blue-300">
-                                <i class="fas fa-sign-out-alt mr-2"></i>Logout
-                            </a>
-                        </div>
-                    </div>
+                            <div class="relative group">
+                                <!-- Profile button -->
+                                <button class="flex items-center space-x-2 text-white hover:text-blue-300 transition duration-200">
+                                    <img src="<?= isset($_SESSION['profile_image']) ? site_url('public/uploads/' . $_SESSION['profile_image']) : 'https://via.placeholder.com/40x40?text=' . substr($_SESSION['first_name'] ?? 'U', 0, 1) ?>" 
+                                        alt="Profile" 
+                                        class="w-8 h-8 rounded-full border border-white/20">
+                                    <span><?= htmlspecialchars(($_SESSION['first_name'] ?? '') . ' ' . ($_SESSION['last_name'] ?? '')) ?></span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+
+                                <!-- Dropdown -->
+                                <div class="dropdown-menu absolute right-0 mt-2 w-48 rounded-lg shadow-lg py-2 z-50 
+                                            hidden group-hover:block bg-gray-800">
+                                    <a href="<?= site_url('auth/profile') ?>" 
+                                    class="dropdown-item block px-4 py-2 text-white hover:text-blue-300">
+                                        <i class="fas fa-user mr-2"></i>Profile
+                                    </a>
+                                    <a href="<?= site_url('auth/logout') ?>" 
+                                    class="dropdown-item block px-4 py-2 text-white hover:text-blue-300">
+                                        <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                                    </a>
+                                </div>
+                            </div>
+
                 </div>
             </div>
         </div>
