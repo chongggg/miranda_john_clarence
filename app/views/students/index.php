@@ -43,8 +43,6 @@
                 
                     <div class="flex items-center space-x-4">
                         <a href="<?= site_url('auth/profile') ?>" class="flex items-center space-x-2 text-white hover:text-blue-400">
-                                alt="Profile" 
-                                class="w-8 h-8 rounded-full">
                             <span><?= htmlspecialchars(($_SESSION['first_name'] ?? '') . ' ' . ($_SESSION['last_name'] ?? '')) ?></span>
                         </a>
 
