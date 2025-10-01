@@ -219,7 +219,7 @@
                     <?= htmlspecialchars(($user['first_name'] ?? '') . ' ' . ($user['last_name'] ?? '')) ?>
                 </h3>
                 <p class="text-blue-300 text-lg"><?= htmlspecialchars($user['email'] ?? '') ?></p>
-                Member since <?= isset($user['created_at']) ? date('M d, Y h:i A', strtotime($user['created_at'])) : 'Unknown' ?>
+                <p class="text-sm text-gray-400 mt-1">Member since <?= isset($user['created_at']) ? date('M d, Y h:i A', strtotime($user['created_at'])) : 'Unknown' ?></p>
             </div>
 
             <!-- Profile Information Section -->
